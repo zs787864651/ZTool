@@ -1,0 +1,170 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+// 依赖插件脚本
+apply from: 'tinker-support.gradle'
+///apply plugin: 'com.neenbedankt.android-apt'
+///apply plugin: 'android-apt'
+
+// 依赖插件脚本,不用热更新时注掉，热更新不支持 instant run
+// 打包时，无论是打普通的 release 包，还是打 base 包，都要开启，否则会因为混淆配置的问题导致crash
+//apply from: 'tinker-support.gradle'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion '29.0.2'
+    defaultConfig {
+        applicationId "com.xiaomai.geek"
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 8
+        versionName "1.2.2"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            // 设置支持的so库架构
+            abiFilters 'armeabi', 'areabi-v7a', 'x86', 'mips'
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('../keystore/mykeystore.jks')
+            storePassword 'Zhangs1125,.'
+            keyAlias 'pyramid'
+            keyPassword 'Zhangs1125,.'
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    buildTypes {
+        /*debug {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }*/
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation project(':mvp')
+    implementation project(':ijkplayer')
+
+
+    // 上滑时FAB能够正常隐藏，但是下拉列表时，FAB就不出现了。
+    // 最后发现是SDK版本的问题，用25(7.1.1)的时候会有这个问题，调成25.0.1就没问题了
+    ///compile 'com.android.support:appcompat-v7:25.0.1'
+    implementation 'com.android.support:design:25.0.1'
+    implementation 'com.android.support:cardview-v7:25.0.1'
+    testImplementation 'junit:junit:4.12'
+    // Logger
+    // https://github.com/orhanobut/logger
+    implementation 'com.orhanobut:logger:1.15'
+    // Glide for image loader
+    // https://github.com/bumptech/glide
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    // glide-transformations
+    // https://github.com/wasabeef/glide-transformations
+    implementation 'jp.wasabeef:glide-transformations:2.0.1'
+    // RxAndroid
+    // https://github.com/ReactiveX/RxAndroid
+    // https://github.com/ReactiveX/RxJava
+    // https://github.com/ReactiveX/RxJavaJoins
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    // Because RxAndroid releases are few and far between, it is recommended you also
+    // explicitly depend on RxJava's latest version for bug fixes and new features.
+    implementation 'io.reactivex:rxjava:1.1.6'
+    // Dagger2
+    // https://github.com/google/dagger
+    implementation 'com.google.dagger:dagger:2.6'
+    annotationProcessor "com.google.dagger:dagger-compiler:2.6"
+    // circleimageview
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    // butterknife
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    // BaseRecyclerViewAdapterHelper 第二步
+    // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.8.5'
+    // recycler view divider
+    // https://github.com/yqritc/RecyclerView-FlexibleDivider
+    implementation 'com.yqritc:recyclerview-flexibledivider:1.4.0'
+    // EventBus
+    // https://github.com/greenrobot/EventBus
+    implementation 'org.greenrobot:eventbus:3.0.0'
+
+    // https://github.com/facebook/stetho
+    implementation 'com.facebook.stetho:stetho:1.4.2'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.4.2'
+
+    // Retrofit for rest client
+    // https://github.com/square/retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    // OkHttp logging interceptor
+    // https://github.com/square/okhttp/wiki/Interceptors
+    // stetho-okhttp 和 logging-interceptor 会产生冲突
+    //compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+
+    // https://github.com/amulyakhare/TextDrawable
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.0'
+
+    // spots-dialog
+    // https://github.com/d-max/spots-dialog
+    implementation 'com.github.d-max:spots-dialog:0.4@aar'
+
+    // FlycoLabelView
+    // https://github.com/H07000223/FlycoLabelView
+    implementation 'com.flyco.labelview:FlycoLabelView_Lib:1.0.2@aar'
+
+    // Markdown View
+    // https://github.com/mukeshsolanki/MarkdownView-Android
+    implementation 'com.mukesh:markdownview:1.0.0'
+
+    // Tinker
+    implementation "com.android.support:multidex:1.0.3" // 多dex配置
+    //注释掉原有bugly的仓库
+    // https://bugly.qq.com/docs/
+    //compile 'com.tencent.bugly:crashreport:latest.release'//其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.3.4
+    implementation 'com.tencent.bugly:crashreport_upgrade:1.4.2'
+    // 指定tinker依赖版本（注：应用升级1.3.5版本起，不再内置tinker）
+    implementation 'com.tencent.tinker:tinker-android-lib:1.9.9'
+    implementation 'com.tencent.bugly:nativecrashreport:3.7.1' //其中latest.release指代最新版本号
+
+    implementation 'com.tencent.tinker:tinker-android-lib:1.9.6'
+
+    implementation 'com.alibaba:fastjson:1.1.57.android'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    implementation 'com.github.zcweng:switch-button:0.0.2@aar'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+    implementation 'com.xiaomai.library:xmlibrary:1.0.1'
+}
+repositories {
+    jcenter()
+}
