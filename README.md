@@ -74,8 +74,4 @@
 
 **发布1.0版本**
 
-[Demo Apk下载](https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.2.2_pro.apk)
-
-GitHub地址：https://github.com/CodeXiaoMai/AndroidGeek
-
 GitHub模块参考了开源项目 [https://github.com/mingjunli/GithubApp](https://github.com/mingjunli/GithubApp)，并在其基础上进行了修改。
