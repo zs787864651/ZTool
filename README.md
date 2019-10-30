@@ -1,23 +1,3 @@
-# ZTool #
-
-> "ZTool"一个专门为Android程序猿打造的工具应用，你们的支持是我最大的动力！！！！
-
-## 本周更新推荐 ##
-
-- 本周重磅更新内容，添加夜间模式支持，白天夜晚上“ZTool”，不用担心伤眼睛
-- 你们期待什么功能，欢迎反馈
-  
-GitHub地址：https://github.com/CodeXiaoMai/AndroidGeek
-
-[Demo Apk下载](https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.2.2_pro.apk)
-
-## 截图 ##
-
-![device-2017-06-16-160932.png](http://upload-images.jianshu.io/upload_images/5275145-a914ae3badc477ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-06-16-160320.png](http://upload-images.jianshu.io/upload_images/5275145-6caf7ea8e6ba0450.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-18-163814.png](http://upload-images.jianshu.io/upload_images/5275145-afb9de7500104cea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290)
-
-![device-2017-05-06-181313_958896.png](http://upload-images.jianshu.io/upload_images/5275145-cbc3213bbb789ec6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-06-16-160752.png](http://upload-images.jianshu.io/upload_images/5275145-b02d12c60fbfe974.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-06-182155.png](http://upload-images.jianshu.io/upload_images/5275145-84000f8dff97a752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) 
-
-![device-2017-05-06-182535.png](http://upload-images.jianshu.io/upload_images/5275145-559cc566e5a40d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-06-182555.png](http://upload-images.jianshu.io/upload_images/5275145-08acc7d89becb6ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-06-182641.png](http://upload-images.jianshu.io/upload_images/5275145-c0d58c6c2c1bb669.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290)
 
 ## 主要技术 ##
 
